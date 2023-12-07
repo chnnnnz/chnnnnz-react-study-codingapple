@@ -9,7 +9,7 @@ import Detail from './detail';
 
 function App() {
   let [shoes] = useState(data);
-  let navigate = useNavigate();
+  let [navigate] = useNavigate();
 
   return (
     <div className="App">
@@ -18,12 +18,9 @@ function App() {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            {/* <Link to="/">홈으로 이동하기</Link>
-            <Link to="/detail">상세페이지로 이동하기</Link> */}
+            <Link to="/">홈으로 이동하기</Link>
+            <Link onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</Link>
           </Nav>
-          <button onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</button>
         </Container>
       </Navbar>
       <Routes>
