@@ -5,11 +5,11 @@ import mainBg from './bg.jpeg'
 import { useState } from 'react';
 import data from './data'; // ./data.js
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import Detail from './detail';
+import Detail from './routes/detail';
 
 function App() {
   let [shoes] = useState(data);
-  let [navigate] = useNavigate();
+  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -18,9 +18,8 @@ function App() {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Link to="/">홈으로 이동하기</Link>
-            <Link onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</Link>
-            <Route path="*" element={ <div>없는페이지임</div> } />
+            <Nav.Link to="/">홈으로 이동하기</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -33,7 +32,7 @@ function App() {
                 {
                   shoes.map((a, i) => {
                     return (
-                      <Card shoes={shoes[i]} i={i} /> // i={i+1} 
+                      <Card shoes={shoes[i]} i={i} key={a.id} /> // i={i+1} 
                     )
                   })
                 }
