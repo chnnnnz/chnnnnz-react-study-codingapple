@@ -20,6 +20,7 @@ function App() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Link to="/">홈으로 이동하기</Link>
             <Link onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</Link>
+            <Route path="*" element={ <div>없는페이지임</div> } />
           </Nav>
         </Container>
       </Navbar>
@@ -32,7 +33,7 @@ function App() {
                 {
                   shoes.map((a, i) => {
                     return (
-                      <Modal shoes={shoes[i]} i={i} /> // i={i+1} 
+                      <Card shoes={shoes[i]} i={i} /> // i={i+1} 
                     )
                   })
                 }
@@ -48,7 +49,7 @@ function App() {
   );
 }
 
-function Modal(props) {
+function Card(props) {
   return (
     <div className="col-md-4">
       <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} width="80%" />
