@@ -11,6 +11,7 @@ import axios from 'axios'
 function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
+  let [clickCount, setClickCount] = useState(0);
 
   return (
     <div className="App">
@@ -40,12 +41,15 @@ function App() {
               </div>
             </div>
             <button onClick={() => {
+              setClickCount(clickCount +1);
               axios.get('https://codingapple1.github.io/shop/data2.json')
               .then((res) => {
                 let copy = [...shoes, ...res.data];
                 setShoes(copy);
               })
               .catch(() => {console.log('실패')})
+
+              axios.post('')
             }}>더보기</button>
           </>
         } />
