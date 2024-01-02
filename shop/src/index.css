@@ -13,3 +13,6 @@ code {
 }
 
 .main-bg {height:700px; /*background:url(./KakaoTalk_Photo_2023-12-01-10-22-52.png)no-repeat center center;*/}
+
+.start {opacity: 0;}
+.end {opacity: 1; transform: opacity .5s;}
