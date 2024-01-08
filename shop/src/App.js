@@ -7,6 +7,7 @@ import data from './data'; // ./data.js
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/detail';
 import axios from 'axios'
+import Cart from './Cart';
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -54,6 +55,7 @@ function App() {
           </>
         } />
         <Route path="/detail/:id" element={<Detail shoes={shoes}/>} />
+        <Route path="/cart" element={ <Cart/> } /> 
       </Routes>  
 
 

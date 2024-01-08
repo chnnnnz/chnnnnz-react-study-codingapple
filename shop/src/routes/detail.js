@@ -85,7 +85,7 @@ function TabContent({tab}) {
     
     let [fade, setFade] = useState('');
     useEffect(() => {
-        fade = end;
+        fade = 'end';
     }, [tab])
 
     return (
