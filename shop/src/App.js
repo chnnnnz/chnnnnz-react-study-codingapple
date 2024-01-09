@@ -7,7 +7,7 @@ import data from './data'; // ./data.js
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/detail';
 import axios from 'axios'
-import Cart from './Cart';
+import Cart from './routes/Cart';
 
 function App() {
   let [shoes, setShoes] = useState(data);
