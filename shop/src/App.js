@@ -21,7 +21,7 @@ function App() {
     localStorage.setItem('watched', JSON.stringify([]));
   },[])
 
-
+ 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
