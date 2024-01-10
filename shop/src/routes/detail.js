@@ -2,6 +2,9 @@ import { Nav } from 'react-bootstrap'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from 'styled-components'
+// import { addItem } from '../store';
+// import { useDispatch } from 'react-redux';
+
 
 let YellowBtn = styled.button`
     background: ${ props => props.bg };
@@ -19,6 +22,7 @@ function Detail(props){
     let [count, setCount] = useState(0);
     let [alert, setAlert] = useState(true);
     let [tab, setTab] = useState(0);
+    // let dispatch = useDispatch()
 
     useEffect(() => {
         console.log('ㅇㅑ호');
@@ -41,6 +45,17 @@ function Detail(props){
     let findPrd = props.shoes.find(function(x){ 
 		return x.id == id 
 	})
+
+
+    useEffect(() => {
+        let Find = localStorage.setItem('watched');
+        Find = JSON.parse(Find);
+        Find.push(findPrd.id); 
+        Find = new Set(Find);
+        Find = Array.from(Find);
+        localStorage.setItem('watched', JSON.stringify(Find));
+    },[])
+
     return (
         <div className="container">
             {
@@ -63,7 +78,9 @@ function Detail(props){
                 <h4 className="pt-5">{findPrd.title}</h4>
                 <p>{findPrd.content}</p>
                 <p>{findPrd.price}0원</p>
-                <button className="btn btn-danger">주문하기</button> 
+                <button className="btn btn-danger" onClick={() => {
+                    // dispatch(addItem())
+                }}>주문하기</button> 
             </div>
 
             <Nav variant="tabs" defaultActionKey="link0">

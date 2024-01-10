@@ -2,7 +2,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import mainBg from './bg.jpeg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import data from './data'; // ./data.js
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/detail';
@@ -13,16 +13,24 @@ function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
   let [clickCount, setClickCount] = useState(0);
+  // let obj = {name : 'kim'};
+  // let objSet = localStorage.setItem('data', JSON.stringify(obj));
+  // console.log(JSON.parse(objSet).name);
+
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]));
+  },[])
+
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          {/* <Navbar.Brand href="#home">Navbar</Navbar.Brand> */}
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link to="/">홈으로 이동하기</Nav.Link>
-            <Nav.Link onClick={()=>{ navigate('/detail') }}>상세페이지로 이동하기</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/cart') }}>Cart</Nav.Link>
+            <Nav.Link onClick={()=>{ navigate('/detail/2') }}>상세페이지</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
